@@ -1,0 +1,108 @@
+generated: '2026-09-06'
+method: probed
+source: https://www.acegreenrecycling.com/
+note: >-
+  Probed the closed well-known path list plus the apis.json/apis.yml root paths on the registrable
+  domain and its www host. ACE Green Recycling runs a single marketing/newsroom WordPress site on
+  WP Engine behind Cloudflare; every path returned a real HTTP 404 rendering the site's 404 template.
+  No document was served, so NO WellKnown or SecurityTxt pointer is emitted. The negative-control
+  path also 404d, confirming the host is not a path-echoing or catch-all responder. Requests to the
+  www host were rate-limited (HTTP 429 / Cloudflare managed challenge) part-way through the sweep;
+  the apex host redirects to www, so the recorded statuses below are the www origin's own responses
+  for every path that completed before the challenge engaged.
+hit_count: 0
+path_echo_control: passed
+soft_404_control:
+  path: /.well-known/ace-green-recycling-negative-control-7f3ab91c.json
+  status: 404
+  bytes: 108709
+hosts:
+- host: https://acegreenrecycling.com
+  documents:
+  - path: /.well-known/security.txt
+    status: 404
+  - path: /.well-known/openid-configuration
+    status: 404
+  - path: /.well-known/oauth-authorization-server
+    status: 404
+  - path: /.well-known/oauth-protected-resource
+    status: 404
+  - path: /.well-known/api-catalog
+    status: 404
+  - path: /.well-known/ai-plugin.json
+    status: 404
+  - path: /.well-known/apis.json
+    status: 404
+  - path: /apis.json
+    status: 404
+  - path: /apis.yml
+    status: 404
+  - path: /.well-known/agent-card.json
+    status: 404
+  - path: /.well-known/agent.json
+    status: 404
+  - path: /.well-known/aauth-resource.json
+    status: 404
+  - path: /.well-known/ucp.json
+    status: 404
+  - path: /.well-known/acp.json
+    status: 404
+- host: https://www.acegreenrecycling.com
+  documents:
+  - path: /.well-known/security.txt
+    status: 404
+  - path: /.well-known/openid-configuration
+    status: 404
+  - path: /.well-known/oauth-authorization-server
+    status: 404
+  - path: /.well-known/oauth-protected-resource
+    status: 404
+  - path: /.well-known/api-catalog
+    status: 404
+  - path: /.well-known/ai-plugin.json
+    status: 404
+  - path: /.well-known/apis.json
+    status: 404
+  - path: /apis.json
+    status: 404
+  - path: /apis.yml
+    status: 404
+  - path: /.well-known/agent-card.json
+    status: 404
+  - path: /.well-known/agent.json
+    status: 429
+    note: Cloudflare managed challenge / rate limit engaged mid-sweep; not a served document.
+  - path: /.well-known/aauth-resource.json
+    status: 429
+    note: Cloudflare managed challenge / rate limit engaged mid-sweep; not a served document.
+  - path: /.well-known/ucp.json
+    status: 429
+    note: Cloudflare managed challenge / rate limit engaged mid-sweep; not a served document.
+  - path: /.well-known/acp.json
+    status: 429
+    note: Cloudflare managed challenge / rate limit engaged mid-sweep; not a served document.
+contract_discovery:
+  note: >-
+    STEP 0b contract discovery ran against the only hosts this record knows (there is no baseURL,
+    no OpenAPI servers[] host and no docs/console host, because no API is published).
+  probes:
+  - {url: 'https://acegreenrecycling.com/openapi.json', status: 404}
+  - {url: 'https://acegreenrecycling.com/openapi.yaml', status: 404}
+  - {url: 'https://acegreenrecycling.com/swagger.json', status: 404}
+  - {url: 'https://acegreenrecycling.com/api-docs', status: 404}
+  - {url: 'https://acegreenrecycling.com/graphql', status: 404}
+  - {url: 'https://acegreenrecycling.com/llms.txt', status: 404}
+  - {url: 'https://acegreenrecycling.com/sitemap_index.xml', status: 404}
+  - {url: 'https://api.github.com/orgs/acegreenrecycling', status: 404}
+  - {url: 'https://api.github.com/orgs/ace-green-recycling', status: 404}
+  - {url: 'https://registry.npmjs.org/-/v1/search?text=acegreenrecycling', status: 200, result: 0 packages}
+  - {url: 'https://pypi.org/pypi/acegreenrecycling/json', status: 404}
+  wordpress_rest_api:
+    url: https://www.acegreenrecycling.com/wp-json/
+    status: 200
+    note: >-
+      WordPress core REST API served by the marketing site's CMS. This is platform boilerplate
+      shipped by WordPress itself, not an API product ACE Green Recycling publishes, documents or
+      supports, so it is recorded here as evidence and is NOT registered as an API in apis.yml.
+  ogc: not-applicable — no geospatial surface, no WMS/WFS/OGC API evidence anywhere on the site
+  result: no machine-readable contract published
